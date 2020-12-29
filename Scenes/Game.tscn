@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Card.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Stock.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Foundation.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -11,6 +12,8 @@ Card = ExtResource( 2 )
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 1.33484
+margin_bottom = 1.33484
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,5 +83,9 @@ position = Vector2( 211.124, 184.139 )
 
 [node name="Stock" parent="." instance=ExtResource( 3 )]
 position = Vector2( 76.0859, 178.869 )
+
+[node name="Foundation" parent="." instance=ExtResource( 4 )]
+position = Vector2( 957.08, 198.891 )
+suit = 0
 [connection signal="pressed" from="Control/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="draw_card" from="Stock" to="." method="_on_Stock_draw_card"]

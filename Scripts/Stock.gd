@@ -16,7 +16,7 @@ func _ready():
 #	pass
 
 
-func _on_Stock_input_event(viewport, event, shape_idx):
+func _on_Stock_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("draw_card", stock_cards.pop_front())

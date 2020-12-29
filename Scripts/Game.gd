@@ -27,7 +27,8 @@ func _process(delta):
 	$Control/HBoxContainer/time.text = "%s:%s:%s" % [str(hours),str(minutes).pad_zeros(2), str(sec).pad_zeros(2)]
 	if Input.is_action_pressed("ui_cancel"):
 		get_tree().change_scene("res://Scenes/MainMenu.tscn")
-	
+
+
 
 func _on_Quit_pressed():
 	get_tree().change_scene("res://Scenes/MainMenu.tscn")
@@ -40,4 +41,5 @@ func _on_Stock_draw_card(card_value):
 		tempCard.dragging = true
 		tempCard.is_face_down = false
 		tempCard.value = card_value
+		tempCard.connect("dropped", tempCard, "letgo")
 		$Cards.add_child(tempCard)

@@ -6,7 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 25.0804, 35.1271 )
 
-[node name="Card" type="Area2D"]
+[node name="Card" type="Area2D" groups=[
+"cards",
+]]
 script = ExtResource( 1 )
 
 [node name="CardSprite" type="AnimatedSprite" parent="."]
