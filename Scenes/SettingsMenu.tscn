@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SettingsMenu.gd" type="Script" id=1]
+
+[node name="SettingsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -121.5
+margin_top = -20.0
+margin_right = 121.5
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 243.0
+margin_bottom = 14.0
+text = "There should be a settings menu here"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 243.0
+margin_bottom = 38.0
+text = "Back"
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_Back_pressed"]
