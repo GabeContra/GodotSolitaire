@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Card.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Stock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Foundation.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Pile.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -12,8 +13,10 @@ Card = ExtResource( 2 )
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 1.33484
-margin_bottom = 1.33484
+margin_left = 1.12244
+margin_top = 3.57971
+margin_right = 1.12244
+margin_bottom = 3.57971
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -81,11 +84,34 @@ position = Vector2( 211.124, 184.139 )
 
 [node name="Cards" type="Node" parent="."]
 
-[node name="Stock" parent="." instance=ExtResource( 3 )]
-position = Vector2( 76.0859, 178.869 )
-
 [node name="Foundation" parent="." instance=ExtResource( 4 )]
-position = Vector2( 957.08, 198.891 )
+position = Vector2( 957.08, 170 )
 suit = 0
+
+[node name="Stock" parent="." instance=ExtResource( 3 )]
+position = Vector2( 76.086, 170 )
+
+[node name="Piles" type="Node" parent="."]
+
+[node name="Pile" parent="Piles" instance=ExtResource( 5 )]
+position = Vector2( 200, 170 )
+
+[node name="Pile2" parent="Piles" instance=ExtResource( 5 )]
+position = Vector2( 300, 170 )
+
+[node name="Pile3" parent="Piles" instance=ExtResource( 5 )]
+position = Vector2( 400, 170 )
+
+[node name="Pile4" parent="Piles" instance=ExtResource( 5 )]
+position = Vector2( 500, 170 )
+
+[node name="Pile5" parent="Piles" instance=ExtResource( 5 )]
+position = Vector2( 600, 170 )
+
+[node name="Pile6" parent="Piles" instance=ExtResource( 5 )]
+position = Vector2( 700, 170 )
+
+[node name="Pile7" parent="Piles" instance=ExtResource( 5 )]
+position = Vector2( 800, 170 )
 [connection signal="pressed" from="Control/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="draw_card" from="Stock" to="." method="_on_Stock_draw_card"]

@@ -6,15 +6,27 @@ extends Node
 # var b = "text"
 export (PackedScene) var Card
 var time = 0
+var moving_card = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	for i in range(52):
-#		var tempCard = Card.instance()
-#		tempCard.value = i
-#		tempCard.position.x = $Position2D.position.x + 60*(i % 13)
-#		tempCard.position.y = $Position2D.position.y + 100*(i%4)
-#		$Cards.add_child(tempCard)
-	pass
+	var val_list = []
+	for i in range(52):
+		val_list.push_front(i)
+	val_list.shuffle()
+	var pileCount = 1
+	for pile in $Piles.get_children():
+		var i = 0
+		while i < pileCount:
+			var tempCard = Card.instance()
+			tempCard.value = val_list.pop_front()
+			tempCard.is_face_down = true
+			if i+1 >= pileCount:
+				tempCard.is_face_down = false
+			pile.card_on_me = tempCard
+			pile.set_card()
+			$Cards.add_child(tempCard)
+			i += 1
+		pileCount += 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,7 +40,17 @@ func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		get_tree().change_scene("res://Scenes/MainMenu.tscn")
 
-
+func allow_to_move(card):
+	if moving_card == null:
+		moving_card = card
+		moving_card.dragging = true
+		moving_card.connect("dropped", self, "stop_moving")
+		
+func stop_moving():
+	if moving_card != null:
+		moving_card.dragging = false
+		moving_card.disconnect("dropped", self, "stop_moving")
+		moving_card = null
 
 func _on_Quit_pressed():
 	get_tree().change_scene("res://Scenes/MainMenu.tscn")
@@ -38,8 +60,10 @@ func _on_Stock_draw_card(card_value):
 	if card_value != null:
 		var tempCard = Card.instance()
 		tempCard.position =  $Stock.position
-		tempCard.dragging = true
 		tempCard.is_face_down = false
 		tempCard.value = card_value
+		tempCard.unlock_move()
 		tempCard.connect("dropped", tempCard, "letgo")
+		tempCard.connect("grab_me", self, "allow_to_move")
+		tempCard.emit_signal("grab_me", tempCard)
 		$Cards.add_child(tempCard)
