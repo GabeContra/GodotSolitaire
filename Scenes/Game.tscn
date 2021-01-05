@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Card.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Stock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Foundation.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Pile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Waste.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -79,9 +80,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 211.124, 184.139 )
-
 [node name="Cards" type="Node" parent="."]
 
 [node name="Foundation" parent="." instance=ExtResource( 4 )]
@@ -90,6 +88,9 @@ suit = 0
 
 [node name="Stock" parent="." instance=ExtResource( 3 )]
 position = Vector2( 76.086, 170 )
+
+[node name="Waste" parent="." instance=ExtResource( 6 )]
+position = Vector2( 78.5723, 340.106 )
 
 [node name="Piles" type="Node" parent="."]
 
@@ -115,3 +116,4 @@ position = Vector2( 700, 170 )
 position = Vector2( 800, 170 )
 [connection signal="pressed" from="Control/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="draw_card" from="Stock" to="." method="_on_Stock_draw_card"]
+[connection signal="take_card" from="Waste" to="." method="_on_Waste_take_card"]

@@ -27,6 +27,9 @@ func _ready():
 			$Cards.add_child(tempCard)
 			i += 1
 		pileCount += 1
+	if !val_list.empty():
+		for i in val_list:
+			$Stock.add_to_stock(i)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,8 +61,22 @@ func _on_Quit_pressed():
 
 func _on_Stock_draw_card(card_value):
 	if card_value != null:
+#		var tempCard = Card.instance()
+#		tempCard.position =  $Stock.position
+#		tempCard.is_face_down = false
+#		tempCard.value = card_value
+#		tempCard.unlock_move()
+#		tempCard.connect("dropped", tempCard, "letgo")
+#		tempCard.connect("grab_me", self, "allow_to_move")
+#		tempCard.emit_signal("grab_me", tempCard)
+#		$Cards.add_child(tempCard)
+		$Waste.add_to_waste(card_value)
+
+
+func _on_Waste_take_card(card_value):
+	if card_value != null:
 		var tempCard = Card.instance()
-		tempCard.position =  $Stock.position
+		tempCard.position =  $Waste.position
 		tempCard.is_face_down = false
 		tempCard.value = card_value
 		tempCard.unlock_move()
