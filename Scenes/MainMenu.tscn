@@ -88,7 +88,7 @@ text = "Play"
 margin_top = 30.0
 margin_right = 433.0
 margin_bottom = 50.0
-text = "IDK"
+text = "Settings"
 
 [node name="Quit" type="Button" parent="VBoxContainer2/MarginContainer2/VBoxContainer"]
 margin_top = 60.0
@@ -97,7 +97,6 @@ margin_bottom = 80.0
 text = "Quit"
 
 [node name="ConfirmQuit" type="ConfirmationDialog" parent="."]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
