@@ -14,5 +14,3 @@ shape = SubResource("1")
 
 [node name="CardSprite" parent="." instance=ExtResource("2_rt84p")]
 visible = false
-
-[connection signal="input_event" from="." to="." method="_on_Waste_input_event"]

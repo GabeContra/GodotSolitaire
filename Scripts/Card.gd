@@ -38,5 +38,13 @@ func set_face(face : bool):
 func get_face():
 	return is_face_down
 
-func _on_Card_input_event(_viewport, _event, _shape_idx):
-	pass
+func _on_Card_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if is_face_down:
+			return
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			_viewport.set_input_as_handled()
+			var parent = get_parent()
+			if parent is Pile:
+				pass
+			print("Area2D clicked! ", Enums.index_to_text(value), " z-index: ", z_index)

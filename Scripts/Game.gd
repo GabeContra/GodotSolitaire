@@ -24,8 +24,8 @@ func _ready():
 			# due to timing of sprite updates this needs to be added before value and face_down is set
 			pile.add_card(tempCard)
 			tempCard.is_face_down = false
-			if i+1 < pileCount:
-				tempCard.is_face_down = true
+			#if i+1 < pileCount:
+				#tempCard.is_face_down = true
 			tempCard.value = deck.pop_back()
 			i += 1
 		pileCount += 1
@@ -61,8 +61,16 @@ func attempt_to_draw_card() -> void:
 		return
 	$Waste.add_to_waste(card)
 	
-func add_to_pile():
-	pass
+func add_to_pile(pileIndex : int):
+	var pile : Pile = $Piles.get_child(pileIndex)
+	var attemptedCard = $Waste.get_top_card()
+	var success = pile.add_enforced_card(attemptedCard)
+	if success:
+		$Waste.remove_top_card()
+		pile.update_pile_sprites()
+	else:
+		if attemptedCard:
+			attemptedCard.queue_free()
 
 func add_to_waste():
 	pass
@@ -103,3 +111,4 @@ func _on_Waste_take_card(card_value):
 
 func _on_draw_pressed() -> void:
 	attempt_to_draw_card()
+	

@@ -3,7 +3,6 @@ extends Area2D
 
 var stock_cards : Array[int]
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CardSprite.set_card(Enums.Cards.BACK)

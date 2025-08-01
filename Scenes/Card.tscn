@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjkbshw0t3rqp"]
+[gd_scene load_steps=5 format=3 uid="uid://bjkbshw0t3rqp"]
 
 [ext_resource type="Script" uid="uid://bakyrcc8of3u2" path="res://Scripts/Card.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://ceghbh6ksbev4" path="res://Scenes/CardSprite.tscn" id="2_3p273"]
+[ext_resource type="Texture2D" uid="uid://4jyutmmyc7s3" path="res://Art/cardAtlas.tres" id="3_h8wm0"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(25.0804, 35.1271)
+size = Vector2(50, 70)
 
 [node name="Card" type="Area2D" groups=["cards"]]
 script = ExtResource("1")
@@ -13,5 +14,4 @@ script = ExtResource("1")
 shape = SubResource("1")
 
 [node name="CardSprite" parent="." instance=ExtResource("2_3p273")]
-
-[connection signal="input_event" from="." to="." method="_on_Card_input_event"]
+texture = ExtResource("3_h8wm0")
