@@ -7,17 +7,17 @@ signal dropped
 signal grab_me(me)
 
 #value affects the look of the card if face up and used for other conditions
-var value = 0 setget set_value, get_value
-var is_face_down : bool = true setget set_face, get_face
+var value = 0: get = get_value, set = set_value
+var is_face_down : bool = true: get = get_face, set = set_face
 
 #these are related to being able to move the card
-var dragging = false setget set_dragging, get_dragging
+var dragging = false: get = get_dragging, set = set_dragging
 var moving = false
 var grab_lock = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$CardSprite.set_card(Enums.Cards.BACK)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -34,12 +34,12 @@ func _input(event):
 		moving = true
 		self.position = event.position
 
-func set_value(new_value):
+func set_value(new_value: int):
 	value = new_value
 	if !is_face_down:
 		$CardSprite.set_frame(new_value)
 	else:
-		$CardSprite.set_frame(Global.Cards.BACK)
+		$CardSprite.set_frame(Enums.Cards.BACK)
 
 func get_value():
 	return value
@@ -66,10 +66,10 @@ func letgo():
 
 func _on_Card_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if !grab_lock:
 				emit_signal("grab_me", self)
-		elif event.button_index == BUTTON_LEFT and !event.pressed:
+		elif event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
 			if !grab_lock:
 				moving = false
 				emit_signal("dropped")

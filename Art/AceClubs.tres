@@ -1,0 +1,4 @@
+[gd_resource type="AtlasTexture" format=2]
+
+[resource]
+region = Rect2( 0, 0, 50, 70 )

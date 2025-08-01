@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://bk43lsgda75j3"
+path="res://.godot/imported/card_clubs_07.png-9f10cde6c25c2c10bbc15a2c94ff7c0b.res"
+group_file="res://Art/cards.png"
+valid=true
+[deps]
+
+
+source_file="res://Art/Cards (large)/card_clubs_07.png"
+dest_files=["res://.godot/imported/card_clubs_07.png-9f10cde6c25c2c10bbc15a2c94ff7c0b.res"]
+
+[params]
+
+atlas_file="res://Art/cards.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

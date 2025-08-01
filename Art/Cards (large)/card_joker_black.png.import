@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://dv04q26x05axa"
+path="res://.godot/imported/card_joker_black.png-76c72173c7d55cf0a661df4d7440768a.res"
+group_file="res://Art/cards.png"
+valid=true
+[deps]
+
+
+source_file="res://Art/Cards (large)/card_joker_black.png"
+dest_files=["res://.godot/imported/card_joker_black.png-76c72173c7d55cf0a661df4d7440768a.res"]
+
+[params]
+
+atlas_file="res://Art/cards.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

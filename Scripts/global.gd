@@ -1,4 +1,5 @@
 extends Node
+class_name Enums
 
 enum Suits {
 	SPADE,
@@ -64,3 +65,34 @@ enum Cards {
 	JOKER,
 	BACK,
 }
+
+static func index_to_text(index: int) -> String:
+	var face = index % 13
+	var suit = index / 13
+	var name = ""
+	match face:
+		0: 
+			name = "Ace "
+		1, 2, 3, 4, 5, 6, 7, 8, 9:
+			name = str(suit + 1) + " "
+		10:
+			name = "Jack "
+		11:
+			name = "Queen "
+		12:
+			name = "King "
+	match suit:
+		Suits.SPADE:
+			name += "of Spades"
+		Suits.DIAMD:
+			name += "of Diamonds"
+		Suits.CLUBS:
+			name += "of Clubs"
+		Suits.HEART:
+			name += "of Hearts"
+		Suits.NONE:
+			if suit == 0:
+				name = "JOKER"
+			elif suit == 1:
+				name = "Card Back"
+	return name

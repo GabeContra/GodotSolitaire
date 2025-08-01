@@ -6,36 +6,22 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Area2D",
-"class": "Card",
-"language": "GDScript",
-"path": "res://Scripts/Card.gd"
-} ]
-_global_script_class_icons={
-"Card": ""
-}
+config_version=5
 
 [application]
 
 config/name="Solitaire"
 run/main_scene="res://Scenes/MainMenu.tscn"
+config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
-
-[autoload]
-
-Global="*res://Scripts/global.gd"
 
 [display]
 
-window/size/width=1280
-window/size/height=720
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/resizable=false
-window/dpi/allow_hidpi=true
 
 [rendering]
 
-environment/default_clear_color=Color( 0.172549, 0.392157, 0.247059, 1 )
-environment/default_environment="res://default_env.tres"
+environment/defaults/default_clear_color=Color(0.172549, 0.392157, 0.247059, 1)
+environment/defaults/default_environment="res://default_env.tres"

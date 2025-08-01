@@ -4,7 +4,7 @@ extends Area2D
 signal remove_card(card_value)
 
 
-export(Global.Suits) var suit = Global.Suits.NONE
+@export var suit = Enums.Suits.NONE # (Global.Suits)
 var cards = []
 var card_over_me = false
 var card_on_me : Card = null
@@ -14,7 +14,7 @@ func _ready():
 	pass
 
 func add_to_foundation(card_value):
-	if suit != Global.Suits.NONE:
+	if suit != Enums.Suits.NONE:
 		if card_value == card_value%13 + suit*13:
 			cards.push_front(card_value)
 			self.update_sprite()
@@ -28,21 +28,22 @@ func add_to_foundation(card_value):
 func card_dropped_on_me():
 	if add_to_foundation(card_on_me.value):
 		card_on_me.queue_free()
-	card_on_me.disconnect("dropped", self, "card_dropped_on_me")
+	card_on_me.disconnect("dropped", Callable(self, "card_dropped_on_me"))
 	card_on_me = null
 	card_over_me = false
 
 
 func update_sprite():
-	if cards.empty():
-		$Sprite.set_frame(Global.Cards.BACK)
+	if cards.is_empty():
+		$CardSprite.visible = false
 	else:
-		$Sprite.set_frame(cards[0])
+		$CardSprite.visible = true
+		$CardSprite.set_card(cards[0])
 
 
 func _on_Foundation_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			emit_signal("remove_card", cards.pop_front())
 			self.update_sprite()
 
@@ -52,12 +53,12 @@ func _on_Foundation_area_entered(area : Area2D):
 		var card := area as Card
 		card_over_me = true
 		card_on_me = card
-		card_on_me.connect("dropped", self, "card_dropped_on_me")
+		card_on_me.connect("dropped", Callable(self, "card_dropped_on_me"))
 
 
 func _on_Foundation_area_exited(area):
 	if area.is_in_group("cards"):
 		card_over_me = false
 		if card_on_me != null:
-			card_on_me.disconnect("dropped", self, "card_dropped_on_me")
+			card_on_me.disconnect("dropped", Callable(self, "card_dropped_on_me"))
 			card_on_me = null

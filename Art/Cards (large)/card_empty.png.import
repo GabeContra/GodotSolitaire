@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://b6gspwdirpd1a"
+path="res://.godot/imported/card_empty.png-5f9b3b843e3cef5e78c82884887767bb.res"
+group_file="res://Art/cards.png"
+valid=true
+[deps]
+
+
+source_file="res://Art/Cards (large)/card_empty.png"
+dest_files=["res://.godot/imported/card_empty.png-5f9b3b843e3cef5e78c82884887767bb.res"]
+
+[params]
+
+atlas_file="res://Art/cards.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

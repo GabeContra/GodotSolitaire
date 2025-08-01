@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://s1aue60q1nxc"
+path="res://.godot/imported/card_hearts_06.png-1b1181620790b61abb64ccf193fabd43.res"
+group_file="res://Art/cards.png"
+valid=true
+[deps]
+
+
+source_file="res://Art/Cards (large)/card_hearts_06.png"
+dest_files=["res://.godot/imported/card_hearts_06.png-1b1181620790b61abb64ccf193fabd43.res"]
+
+[params]
+
+atlas_file="res://Art/cards.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

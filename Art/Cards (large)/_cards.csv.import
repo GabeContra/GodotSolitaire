@@ -1,0 +1,15 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bkcc6ktler05"
+valid=false
+
+[deps]
+
+source_file="res://Art/Cards (large)/_cards.csv"
+
+[params]
+
+compress=true
+delimiter=0

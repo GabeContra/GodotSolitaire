@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://bguhvcsp6t0v6"
+path="res://.godot/imported/card_spades_K.png-dcfb0a9e6a4daf2536b10c8c3d62aba3.res"
+group_file="res://Art/cards.png"
+valid=true
+[deps]
+
+
+source_file="res://Art/Cards (large)/card_spades_K.png"
+dest_files=["res://.godot/imported/card_spades_K.png-dcfb0a9e6a4daf2536b10c8c3d62aba3.res"]
+
+[params]
+
+atlas_file="res://Art/cards.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

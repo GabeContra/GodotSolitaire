@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceghbh6ksbev4"]
+
+[ext_resource type="Script" uid="uid://cl6jiad8jxxwn" path="res://Scripts/card_sprite.gd" id="1_a0bpp"]
+[ext_resource type="Texture2D" uid="uid://4jyutmmyc7s3" path="res://Art/cardAtlas.tres" id="2_3xkbf"]
+
+[node name="CardSprite" type="Sprite2D"]
+script = ExtResource("1_a0bpp")
+base_atlas = ExtResource("2_3xkbf")

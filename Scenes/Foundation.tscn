@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://dyr8mo4fy35nc"]
 
-[ext_resource path="res://Art/CardFrames.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://Scripts/Foundation.gd" type="Script" id=2]
+[ext_resource type="Script" uid="uid://bxl4adqy8rhe6" path="res://Scripts/Foundation.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://ceghbh6ksbev4" path="res://Scenes/CardSprite.tscn" id="2_kyefa"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 27.369, 36.8826 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(27.369, 36.8826)
 
 [node name="Foundation" type="Area2D"]
-modulate = Color( 0.478431, 0.631373, 0.780392, 1 )
-script = ExtResource( 2 )
+modulate = Color(0.478431, 0.631373, 0.780392, 1)
+script = ExtResource("2")
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
-frames = ExtResource( 1 )
-frame = 53
+[node name="CardSprite" parent="." instance=ExtResource("2_kyefa")]
+visible = false
 
 [node name="Space" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
+
 [connection signal="area_entered" from="." to="." method="_on_Foundation_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Foundation_area_exited"]
 [connection signal="input_event" from="." to="." method="_on_Foundation_input_event"]

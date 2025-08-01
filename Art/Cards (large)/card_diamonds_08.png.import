@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://m3hqsj6t18ek"
+path="res://.godot/imported/card_diamonds_08.png-c1911c10b44896b2b032e23afad778a0.res"
+group_file="res://Art/cards.png"
+valid=true
+[deps]
+
+
+source_file="res://Art/Cards (large)/card_diamonds_08.png"
+dest_files=["res://.godot/imported/card_diamonds_08.png-c1911c10b44896b2b032e23afad778a0.res"]
+
+[params]
+
+atlas_file="res://Art/cards.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true
