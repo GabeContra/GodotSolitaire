@@ -46,19 +46,3 @@ func _on_Foundation_input_event(_viewport, event, _shape_idx):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			emit_signal("remove_card", cards.pop_front())
 			self.update_sprite()
-
-
-func _on_Foundation_area_entered(area : Area2D):
-	if area.is_in_group("cards"):
-		var card := area as Card
-		card_over_me = true
-		card_on_me = card
-		card_on_me.connect("dropped", Callable(self, "card_dropped_on_me"))
-
-
-func _on_Foundation_area_exited(area):
-	if area.is_in_group("cards"):
-		card_over_me = false
-		if card_on_me != null:
-			card_on_me.disconnect("dropped", Callable(self, "card_dropped_on_me"))
-			card_on_me = null

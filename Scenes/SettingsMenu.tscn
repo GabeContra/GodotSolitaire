@@ -3,51 +3,38 @@
 [ext_resource type="Script" uid="uid://c1ucm4k7t3rtq" path="res://Scripts/SettingsMenu.gd" id="1"]
 
 [node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1")
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Back" type="Button" parent="."]
+layout_mode = 0
 offset_right = 100.0
 offset_bottom = 50.0
 text = "Back"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
 anchor_left = 0.2
 anchor_top = 0.1
 anchor_right = 0.8
 anchor_bottom = 0.9
-tab_alignment = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+current_tab = 0
 
 [node name="Decks" type="TabBar" parent="TabContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="Gameplay" type="TabBar" parent="TabContainer"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 32.0
-offset_right = -4.0
-offset_bottom = -4.0
+layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Video" type="TabBar" parent="TabContainer"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 24.0
-offset_right = -4.0
-offset_bottom = -4.0
+layout_mode = 2
+metadata/_tab_index = 2
 
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

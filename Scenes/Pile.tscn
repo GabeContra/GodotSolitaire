@@ -14,5 +14,16 @@ shape = SubResource("1")
 
 [node name="Cards" type="Marker2D" parent="."]
 
-[connection signal="area_entered" from="." to="." method="_on_Pile_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_Pile_area_exited"]
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.5
+offset_top = -75.0
+offset_right = 45.5
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Add to Pile"

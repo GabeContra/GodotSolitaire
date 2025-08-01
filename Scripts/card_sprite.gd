@@ -12,7 +12,7 @@ class_name CardSprite
 var atlas_copy: AtlasTexture
 
 func _ready():
-	if base_atlas:
+	if not atlas_copy:
 		# Make a private copy so changes don't affect other sprites
 		self.atlas_copy = base_atlas.duplicate()
 		self.texture = atlas_copy
@@ -23,8 +23,7 @@ func set_card(index: int):
 		self.atlas_copy = base_atlas.duplicate()
 		self.texture = atlas_copy
 	var col = index % columns
-	var row = index / columns
-	print("Sprite of ", Enums.index_to_text(index))
+	@warning_ignore("integer_division") var row = index / columns
 
 	self.texture.region = Rect2(
 		col * card_width,

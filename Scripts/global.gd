@@ -9,6 +9,22 @@ enum Suits {
 	NONE,
 }
 
+enum Ranks {
+	ACE,
+	TWO,
+	THREE,
+	FOUR,
+	FIVE,
+	SIX,
+	SEVEN,
+	EIGHT,
+	NINE,
+	TEN,
+	JACK,
+	QUEEN,
+	KING
+}
+
 enum Cards {
 	SPADE_ACE,
 	SPADE_2,
@@ -67,32 +83,33 @@ enum Cards {
 }
 
 static func index_to_text(index: int) -> String:
-	var face = index % 13
+	var rank = index % 13
+	@warning_ignore("integer_division") 
 	var suit = index / 13
-	var name = ""
-	match face:
-		0: 
-			name = "Ace "
-		1, 2, 3, 4, 5, 6, 7, 8, 9:
-			name = str(suit + 1) + " "
-		10:
-			name = "Jack "
-		11:
-			name = "Queen "
-		12:
-			name = "King "
+	var cardName = ""
+	match rank:
+		Ranks.ACE: 
+			cardName = "Ace "
+		Ranks.TWO, Ranks.THREE, Ranks.FOUR, Ranks.FIVE, Ranks.SIX, Ranks.SEVEN, Ranks.EIGHT, Ranks.NINE, Ranks.TEN:
+			cardName = str(rank + 1) + " "
+		Ranks.JACK:
+			cardName = "Jack "
+		Ranks.QUEEN:
+			cardName = "Queen "
+		Ranks.KING:
+			cardName = "King "
 	match suit:
 		Suits.SPADE:
-			name += "of Spades"
+			cardName += "of Spades"
 		Suits.DIAMD:
-			name += "of Diamonds"
+			cardName += "of Diamonds"
 		Suits.CLUBS:
-			name += "of Clubs"
+			cardName += "of Clubs"
 		Suits.HEART:
-			name += "of Hearts"
+			cardName += "of Hearts"
 		Suits.NONE:
-			if suit == 0:
-				name = "JOKER"
-			elif suit == 1:
-				name = "Card Back"
-	return name
+			if rank == 0:
+				cardName = "JOKER"
+			elif rank == 1:
+				cardName = "Card Back"
+	return cardName

@@ -15,11 +15,16 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func  draw_card() -> int:
+func  draw_card():
+	if stock_cards.is_empty():
+		print("NO MORE STOCK")
+		$CardSprite.visible = false
 	return stock_cards.pop_back()
 
 func add_to_stock(value):
 	stock_cards.push_front(value)
+	$CardSprite.visible = true
+	
 
 func _on_Stock_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
