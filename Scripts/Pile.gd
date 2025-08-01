@@ -29,9 +29,6 @@ func remove_top_card() -> int:
 	num_of_cards -= 1
 	return cards.pop_back()
 
-func update_visuals():
-	$Label.text = "updated"
-
 
 func set_card():
 	if card_on_me != null:
