@@ -24,8 +24,8 @@ func _ready():
 			# due to timing of sprite updates this needs to be added before value and face_down is set
 			pile.add_card(tempCard)
 			tempCard.is_face_down = false
-			#if i+1 < pileCount:
-				#tempCard.is_face_down = true
+			if i+1 < pileCount:
+				tempCard.is_face_down = true
 			tempCard.value = deck.pop_back()
 			i += 1
 		pileCount += 1
@@ -112,3 +112,7 @@ func _on_Waste_take_card(card_value):
 func _on_draw_pressed() -> void:
 	attempt_to_draw_card()
 	
+
+
+func _on_stock_stock_clicked() -> void:
+	attempt_to_draw_card()

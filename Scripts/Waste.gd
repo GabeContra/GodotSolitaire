@@ -7,7 +7,7 @@ var CardScene : PackedScene = preload("res://Scenes/Card.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	update_sprite()
 
 func add_to_waste(value : int):
 	waste_cards.push_back(value)
@@ -27,9 +27,8 @@ func get_top_card() -> Card:
 
 func update_sprite():
 	if waste_cards.is_empty():
-		$CardSprite.visible = false
+		$CardSprite.set_card(Enums.Cards.WASTE)
 	else:
-		$CardSprite.visible = true
 		$CardSprite.set_card(waste_cards[-1])
 
 func reset_waste():

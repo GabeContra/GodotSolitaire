@@ -80,6 +80,11 @@ enum Cards {
 	HEART_KING,
 	JOKER,
 	BACK,
+	FOUND_SPADE,
+	FOUND_DIAMD,
+	FOUND_CLUBS,
+	FOUND_HEART,
+	WASTE
 }
 
 static func index_to_text(index: int) -> String:

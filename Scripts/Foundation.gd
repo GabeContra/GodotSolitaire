@@ -5,18 +5,17 @@ signal remove_card(card_value)
 
 
 @export var suit = Enums.Suits.NONE # (Global.Suits)
-var cards = []
-var card_over_me = false
-var card_on_me : Card = null
-
+var cards : Array[Card]
+var current_value = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	update_sprite()
 
-func add_to_foundation(card_value):
+func add_to_foundation(card : Card) -> bool:
 	if suit != Enums.Suits.NONE:
-		if card_value == card_value%13 + suit*13:
-			cards.push_front(card_value)
+		if card.value == current_value%13 + suit*13:
+			cards.push_back(card)
+			current_value += 1
 			self.update_sprite()
 			return true
 	return false
@@ -25,24 +24,15 @@ func add_to_foundation(card_value):
 #func _process(delta):
 #	pass
 
-func card_dropped_on_me():
-	if add_to_foundation(card_on_me.value):
-		card_on_me.queue_free()
-	card_on_me.disconnect("dropped", Callable(self, "card_dropped_on_me"))
-	card_on_me = null
-	card_over_me = false
-
-
 func update_sprite():
 	if cards.is_empty():
-		$CardSprite.visible = false
+		$CardSprite.set_card(Enums.Cards.FOUND_SPADE + suit)
 	else:
-		$CardSprite.visible = true
 		$CardSprite.set_card(cards[0])
 
 
 func _on_Foundation_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			emit_signal("remove_card", cards.pop_front())
+			print("Foundation clicked")
 			self.update_sprite()

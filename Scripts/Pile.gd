@@ -16,18 +16,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var click_pos = get_global_mouse_position()
 
-		# Check cards from TOP to BOTTOM
-		for i in range($Cards.get_child_count() - 1, -1, -1):
-			var card = $Cards.get_child(i)
-			if card.get_overlapping_point(click_pos):
-				print("Clicked card:", card.name)
-				 # Handle card click logic here
-				get_viewport().set_input_as_handled()
-				break # stop after first (topmost) hit
+
 func add_card(card : Card):
 	$Cards.add_child(card)
 	card.position.y = ($Cards.get_child_count() - 1) * 25
@@ -71,6 +61,9 @@ func check_legality(card: Card) -> bool:
 	return false
 
 func update_pile_sprites() -> void:
+	var finalCard = $Cards.get_child(-1)
+	if finalCard and finalCard.is_face_down:
+		finalCard.is_face_down = false
 	for cardObject in $Cards.get_children():
 		cardObject.update_sprite()
 

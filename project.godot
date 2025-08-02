@@ -23,5 +23,6 @@ window/size/resizable=false
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.172549, 0.392157, 0.247059, 1)
 environment/defaults/default_environment="res://default_env.tres"
