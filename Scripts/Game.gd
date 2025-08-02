@@ -7,7 +7,8 @@ extends Node
 var CardScene = preload("res://Scenes/Card.tscn")
 var time = 0
 var moving_card = null
-var currentSelection = null
+var movement_target = null
+var drag_data = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,8 +32,34 @@ func _ready():
 		pileCount += 1
 	$Stock.stock_cards = deck
 
-
+func _notification(what: int) -> void:
+	if what == Node.NOTIFICATION_DRAG_BEGIN:
+		drag_data = get_viewport().gui_get_drag_data().value
+		$Stock.can_drag = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+	if what == Node.NOTIFICATION_DRAG_END:
+		if get_viewport().gui_is_drag_successful():
+			$Stock.can_drag = true
+		else:
+			moving_card = CardScene.instantiate()
+			add_child(moving_card)
+			moving_card.value = drag_data
+			moving_card.is_face_down = false
+			moving_card.position = get_viewport().get_mouse_position() - Vector2(25,35)
+			animate_card_movement(moving_card, $Waste.position)
+			#$Waste.add_to_waste(drag_data)
+
+func animate_card_movement(card : Card, targetPosition : Vector2):
+	var tween = get_tree().create_tween()
+	tween.tween_property(card, "position", targetPosition, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_callback(_on_card_movement_finished)
+	
+func _on_card_movement_finished():
+	add_to_waste(moving_card.value)
+	moving_card.queue_free()
+	moving_card = null
+	$Stock.can_drag = true
+
 func _process(delta):
 	time += delta
 	var seconds = int(time)
@@ -42,18 +69,6 @@ func _process(delta):
 	$UI/TopContainer/time.text = "%s:%s:%s" % [str(hours),str(minutes).pad_zeros(2), str(sec).pad_zeros(2)]
 	if Input.is_action_pressed("ui_cancel"):
 		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
-
-func allow_to_move(card):
-	if moving_card == null:
-		moving_card = card
-		moving_card.dragging = true
-		moving_card.connect("dropped", Callable(self, "stop_moving"))
-		
-func stop_moving():
-	if moving_card != null:
-		moving_card.dragging = false
-		moving_card.disconnect("dropped", Callable(self, "stop_moving"))
-		moving_card = null
 
 func attempt_to_draw_card() -> void:
 	var card = $Stock.draw_card()
@@ -72,8 +87,8 @@ func add_to_pile(pileIndex : int):
 		if attemptedCard:
 			attemptedCard.queue_free()
 
-func add_to_waste():
-	pass
+func add_to_waste(cardIndex : int):
+	$Waste.add_to_waste(cardIndex)
 	
 func add_to_foundation():
 	pass

@@ -9,10 +9,11 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 50.0
 offset_bottom = 70.0
+mouse_filter = 1
 script = ExtResource("1")
 
 [node name="CardSprite" parent="." instance=ExtResource("2_3p273")]
+layout_mode = 0
 texture = ExtResource("3_h8wm0")
-centered = false
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -1,4 +1,4 @@
-extends Area2D
+extends Control
 class_name Waste
 signal take_card(value)
 

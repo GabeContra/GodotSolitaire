@@ -92,19 +92,31 @@ text = "Draw
 "
 
 [node name="SpadeFoundation" parent="." instance=ExtResource("4")]
-position = Vector2(500, 575)
+offset_left = 500.0
+offset_top = 575.0
+offset_right = 500.0
+offset_bottom = 575.0
 suit = 0
 
 [node name="DiamondFoundation" parent="." instance=ExtResource("4")]
-position = Vector2(800, 575)
+offset_left = 800.0
+offset_top = 575.0
+offset_right = 800.0
+offset_bottom = 575.0
 suit = 1
 
 [node name="ClubFoundation" parent="." instance=ExtResource("4")]
-position = Vector2(700, 575)
+offset_left = 700.0
+offset_top = 575.0
+offset_right = 700.0
+offset_bottom = 575.0
 suit = 2
 
 [node name="HeartFoundation" parent="." instance=ExtResource("4")]
-position = Vector2(600, 575)
+offset_left = 600.0
+offset_top = 575.0
+offset_right = 600.0
+offset_bottom = 575.0
 suit = 3
 
 [node name="Stock" parent="." instance=ExtResource("3")]
@@ -114,36 +126,60 @@ offset_right = 262.0
 offset_bottom = 200.0
 
 [node name="Waste" parent="." instance=ExtResource("6")]
-position = Vector2(300, 340.106)
+offset_left = 300.0
+offset_top = 340.106
+offset_right = 300.0
+offset_bottom = 340.106
 
 [node name="Piles" type="Node" parent="."]
 
 [node name="Pile" parent="Piles" instance=ExtResource("5")]
-position = Vector2(400, 170)
+offset_left = 400.0
+offset_top = 170.0
+offset_right = 400.0
+offset_bottom = 170.0
 id = 0
 
 [node name="Pile2" parent="Piles" instance=ExtResource("5")]
-position = Vector2(500, 170)
+offset_left = 500.0
+offset_top = 170.0
+offset_right = 500.0
+offset_bottom = 170.0
 id = 1
 
 [node name="Pile3" parent="Piles" instance=ExtResource("5")]
-position = Vector2(600, 170)
+offset_left = 600.0
+offset_top = 170.0
+offset_right = 600.0
+offset_bottom = 170.0
 id = 2
 
 [node name="Pile4" parent="Piles" instance=ExtResource("5")]
-position = Vector2(700, 170)
+offset_left = 700.0
+offset_top = 170.0
+offset_right = 700.0
+offset_bottom = 170.0
 id = 3
 
 [node name="Pile5" parent="Piles" instance=ExtResource("5")]
-position = Vector2(800, 170)
+offset_left = 800.0
+offset_top = 170.0
+offset_right = 800.0
+offset_bottom = 170.0
 id = 4
 
 [node name="Pile6" parent="Piles" instance=ExtResource("5")]
-position = Vector2(900, 170)
+offset_left = 900.0
+offset_top = 170.0
+offset_right = 900.0
+offset_bottom = 170.0
 id = 5
 
 [node name="Pile7" parent="Piles" instance=ExtResource("5")]
-position = Vector2(1000, 170)
+offset_left = 1000.0
+offset_top = 170.0
+offset_right = 1000.0
+offset_bottom = 170.0
 id = 6
 
 [connection signal="pressed" from="UI/Quit" to="." method="_on_Quit_pressed"]

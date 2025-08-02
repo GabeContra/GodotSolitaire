@@ -1,20 +1,28 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxmvd1bx3wc17"]
 
 [ext_resource type="Script" uid="uid://cltlbljvghs8i" path="res://Scripts/Pile.gd" id="1"]
+[ext_resource type="Script" uid="uid://0bf7eewfq5gy" path="res://Scenes/drop_area.gd" id="2_0tu1q"]
 
-[sub_resource type="CapsuleShape2D" id="1"]
-radius = 29.439
-height = 58.878
-
-[node name="Pile" type="Area2D"]
+[node name="Pile" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1")
 
-[node name="SetArea" type="CollisionShape2D" parent="."]
-shape = SubResource("1")
+[node name="DropArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -42.0
+offset_top = -51.0
+offset_right = 41.0
+offset_bottom = 49.0
+mouse_filter = 1
+script = ExtResource("2_0tu1q")
 
 [node name="Cards" type="Marker2D" parent="."]
+position = Vector2(-25, -35)
 
 [node name="Add" type="Button" parent="."]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

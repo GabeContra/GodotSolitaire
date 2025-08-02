@@ -4,7 +4,7 @@ class_name Card
 
 #value affects the look of the card if face up and used for other conditions
 var value = 0: get = get_value, set = set_value
-var is_face_down : bool = true: get = get_face, set = set_face
+var is_face_down : bool = false: get = get_face, set = set_face
 
 
 # Called when the node enters the scene tree for the first time.

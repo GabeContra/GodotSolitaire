@@ -1,4 +1,4 @@
-extends Sprite2D
+extends TextureRect
 class_name CardSprite
 # Size of each card in pixels (adjust for your PNG)
 @export var card_width: int = 50

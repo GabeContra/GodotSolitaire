@@ -1,4 +1,4 @@
-extends Area2D
+extends Control
 class_name Pile
 
 signal attempt_to_add(id: int)
@@ -22,6 +22,7 @@ func add_card(card : Card):
 	$Cards.add_child(card)
 	card.position.y = ($Cards.get_child_count() - 1) * 25
 	card.z_index = $Cards.get_child_count()
+	$DropArea.position.y += 25
 
 func add_enforced_card(card: Card) -> bool:
 	if check_legality(card):
@@ -70,6 +71,7 @@ func update_pile_sprites() -> void:
 func remove_top_card() -> Card:
 	var topCard = $Cards.get_child(-1)
 	$Cards.remove_child(topCard)
+	$DropArea.position.y -= 25
 	return topCard
 
 

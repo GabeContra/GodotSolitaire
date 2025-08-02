@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cl6jiad8jxxwn" path="res://Scripts/card_sprite.gd" id="1_a0bpp"]
 [ext_resource type="Texture2D" uid="uid://4jyutmmyc7s3" path="res://Art/cardAtlas.tres" id="2_3xkbf"]
 
-[node name="CardSprite" type="Sprite2D"]
+[node name="CardSprite" type="TextureRect"]
+offset_right = 50.0
+offset_bottom = 70.0
 script = ExtResource("1_a0bpp")
 base_atlas = ExtResource("2_3xkbf")
